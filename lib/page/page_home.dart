@@ -189,14 +189,14 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       ElevatedButton(
                         onPressed: () {
                           HapticFeedback.lightImpact();
-                          final RandomCategories =
+                          final randomCategories =
                               (modelCategory.toList()..shuffle()).first;
 
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  PageQuiz(category: RandomCategories),
+                                  PageQuiz(category: randomCategories),
                             ),
                           );
                         },
