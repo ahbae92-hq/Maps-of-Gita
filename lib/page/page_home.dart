@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maps_of_gita/model/model_category.dart';
 import 'package:maps_of_gita/page/page_quiz.dart';
-
 import '../widget/category_card.dart';
 
 class PageHome extends StatefulWidget {
@@ -13,34 +12,35 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
+  // 🔹 Daftar kategori — harus sama dengan di QuestionBank
   List<ModelCategory> modelCategory = [
     ModelCategory(
       strName: 'Senilai',
       strIcon: Icons.lightbulb_outline,
-      strColor: Color(0xFF6c63FF),
-      strDesc: 'Tes Pecahan Senilai',
-      questCount: 30,
+      strColor: const Color(0xFF6C63FF),
+      strDesc: 'Latihan mengenal pecahan senilai',
+      questCount: 10,
     ),
     ModelCategory(
       strName: 'Desimal dan Persen',
       strIcon: Icons.percent,
-      strColor: Color(0xFF00C853),
-      strDesc: 'Tes Desimal Persen',
-      questCount: 30,
+      strColor: const Color(0xFF00C853),
+      strDesc: 'Latihan konversi pecahan, desimal, dan persen',
+      questCount: 10,
     ),
     ModelCategory(
       strName: 'Hitung Pecahan',
-      strIcon: Icons.cast_for_education,
-      strColor: Color(0xFFE8624A),
-      strDesc: 'Tes Hitung Pecahan',
-      questCount: 30,
+      strIcon: Icons.calculate_outlined,
+      strColor: const Color(0xFFE8624A),
+      strDesc: 'Latihan operasi hitung pecahan',
+      questCount: 10,
     ),
     ModelCategory(
       strName: 'Soal Cerita',
-      strIcon: Icons.history,
-      strColor: Color(0xFF28C8BD),
-      strDesc: 'Tes Soal Cerita',
-      questCount: 30,
+      strIcon: Icons.book_outlined,
+      strColor: const Color(0xFF28C8BD),
+      strDesc: 'Latihan soal cerita pecahan',
+      questCount: 10,
     ),
   ];
 
@@ -48,26 +48,32 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFF8F9FF), Color(0xFFE8EAFF), Color(0xFFF0F2FF)],
+            colors: [
+              Color(0xFFF8F9FF),
+              Color(0xFFE8EAFF),
+              Color(0xFFF0F2FF),
+            ],
           ),
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsetsGeometry.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
+
+                // 🔹 Header sambutan
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'Selamat Datang!',
                           style: TextStyle(
@@ -81,29 +87,39 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                           'Siswa SDN Cimayang',
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
                           ),
                         ),
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.all(122),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Color(0xFFEDF2F7).withOpacity(0.1),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.playlist_add_check_circle,
-                        size: 32,
+                        size: 36,
                         color: Color(0xFFE91E63),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
+
+                const SizedBox(height: 32),
+
+                // 🔹 Statistik ringkas
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -111,7 +127,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
                         blurRadius: 10,
-                        offset: Offset(0, 4),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
@@ -120,9 +136,9 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       Expanded(
                         child: buildStateItem(
                           'Total Soal',
-                          '10+',
+                          '40',
                           Icons.quiz,
-                          Color(0xFF6C63FF),
+                          const Color(0xFF6C63FF),
                         ),
                       ),
                       Container(width: 1, height: 40, color: Colors.grey[300]),
@@ -131,24 +147,27 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                           'Total Kategori',
                           '4',
                           Icons.category,
-                          Color(0xFF4ECDC4),
+                          const Color(0xFF4ECDC4),
                         ),
                       ),
                       Container(width: 1, height: 40, color: Colors.grey[300]),
                       Expanded(
                         child: buildStateItem(
-                          'Tingkat Kesulitan',
+                          'Kesulitan',
                           'Dasar',
                           Icons.trending_down,
-                          Color.fromARGB(255, 118, 255, 64),
+                          const Color(0xFF76FF03),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 32),
+
+                const SizedBox(height: 32),
+
+                // 🔹 Tombol mulai acak
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -156,7 +175,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
                         blurRadius: 10,
-                        offset: Offset(0, 4),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
@@ -165,7 +184,7 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               'Mulai Sekarang?',
                               style: TextStyle(
@@ -176,42 +195,40 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              'Ikuti kuis acak sekarang!',
+                              'Coba kuis acak dari berbagai kategori!',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.black,
+                                color: Colors.black54,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       ElevatedButton(
                         onPressed: () {
                           HapticFeedback.lightImpact();
-                          final randomCategories =
+                          final randomCategory =
                               (modelCategory.toList()..shuffle()).first;
 
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  PageQuiz(category: randomCategories),
+                                  PageQuiz(category: randomCategory),
                             ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFE91e63),
+                          backgroundColor: const Color(0xFFE91E63),
                           foregroundColor: Colors.white,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 12,
-                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 12),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(20),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Mulai',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -219,8 +236,11 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-                SizedBox(height: 32),
-                Text(
+
+                const SizedBox(height: 32),
+
+                // 🔹 Daftar kategori
+                const Text(
                   'Pilih Kategori Anda',
                   style: TextStyle(
                     fontSize: 22,
@@ -228,12 +248,13 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
+
                 GridView.builder(
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
@@ -245,7 +266,6 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
                       category: modelCategory[index],
                       onTap: () {
                         HapticFeedback.lightImpact();
-
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -265,28 +285,25 @@ class _PageHomeState extends State<PageHome> with TickerProviderStateMixin {
     );
   }
 
+  // 🔹 Widget kecil untuk statistik di atas
   Widget buildStateItem(
-    String strTitle,
-    String strValue,
-    IconData strIcon,
-    Color strColor,
-  ) {
+      String strTitle, String strValue, IconData strIcon, Color strColor) {
     return Column(
       children: [
-        Icon(strIcon, color: strColor, size: 24),
-        SizedBox(height: 8),
+        Icon(strIcon, color: strColor, size: 28),
+        const SizedBox(height: 8),
         Text(
           strValue,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             color: Color(0xFF2D3748),
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           strTitle,
-          style: TextStyle(fontSize: 12, color: Color(0xFF2D3748)),
+          style: const TextStyle(fontSize: 12, color: Color(0xFF2D3748)),
         ),
       ],
     );

@@ -4,8 +4,8 @@ class ModelQuestion {
   int? strCorrectAnswer;
 
   ModelQuestion({
-    required this.strText,
-    required this.strListOptions,
-    required this.strCorrectAnswer,
+    this.strText,
+    this.strListOptions,
+    this.strCorrectAnswer, 
   });
 }
